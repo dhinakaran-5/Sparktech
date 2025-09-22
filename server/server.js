@@ -2,6 +2,7 @@ import cookieParser from "cookie-parser";
 import express from "express" 
 import cors from 'cors'
 import connectDB from "./configs/db.js";
+const serverless = require("serverless-http");
 
 import 'dotenv/config';
 import userRouter from "./routes/userRoute.js";
@@ -54,4 +55,7 @@ app.use("/api/order",orderRouter)
 app.listen(port,()=>{
     console.log(`SERVER IS RUNNING ON http://localhost:${port}`)
 })
+
+
+module.exports = serverless(app);
 
